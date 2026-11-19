@@ -1,0 +1,80 @@
+/* SOLMAR HEAT — HUD and menu styling. Sun-soaked orange/teal on dark glass. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #0b1c26;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #fff; }
+#game, #game-canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+.hidden { display: none !important; }
+
+/* ---------------- HUD ---------------- */
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+#top-left { position: absolute; top: 16px; left: 16px; }
+#cash { font-size: 30px; font-weight: 800; color: #7dff9b;
+  text-shadow: 0 2px 0 rgba(0,0,0,.55), 0 0 12px rgba(0,0,0,.4); letter-spacing: 1px; }
+#stars { font-size: 26px; letter-spacing: 4px; color: #c8ccd2;
+  text-shadow: 0 2px 0 rgba(0,0,0,.6); margin-top: 2px; }
+#stars.hot { color: #ffd23e; animation: starpulse 0.9s infinite; }
+@keyframes starpulse { 50% { transform: scale(1.08); } }
+#health-bar { width: 170px; height: 10px; margin-top: 8px; background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.35); border-radius: 5px; overflow: hidden; }
+#health-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #ff5a4e, #ff8a5c);
+  transition: width .2s; }
+#top-right { position: absolute; top: 16px; right: 16px; text-align: right; }
+#minimap { width: 180px; height: 180px; border: 2px solid rgba(255,255,255,.75);
+  border-radius: 50%; background: #0e5a80; box-shadow: 0 4px 18px rgba(0,0,0,.5); }
+#clock { margin-top: 6px; font-size: 15px; font-weight: 700; letter-spacing: 2px;
+  text-shadow: 0 2px 0 rgba(0,0,0,.6); }
+#objective-box { position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  min-width: 320px; max-width: 520px; text-align: center; background: rgba(8, 24, 34, .72);
+  border: 1px solid rgba(255,255,255,.25); border-radius: 10px; padding: 10px 18px; }
+#objective-title { font-size: 11px; letter-spacing: 4px; color: #f5d76e; font-weight: 800; }
+#objective-line { font-size: 16px; font-weight: 600; margin-top: 3px; }
+#mission-timer { font-size: 22px; font-weight: 800; color: #ff8a5c; margin-top: 2px; }
+#speed { position: absolute; right: 22px; bottom: 86px; font-size: 34px; font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0,0,0,.6); }
+#context-hint { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+  font-size: 14px; background: rgba(0,0,0,.55); padding: 7px 14px; border-radius: 20px; }
+#cash-pop { position: absolute; top: 64px; left: 20px; font-size: 30px; font-weight: 800;
+  color: #7dff9b; opacity: 0; text-shadow: 0 2px 0 rgba(0,0,0,.6); }
+#cash-pop.pop { animation: cashpop 1.6s ease-out; }
+@keyframes cashpop { 0% { opacity: 0; transform: translateY(8px); }
+  15% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-26px); } }
+#toast { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
+  background: rgba(8, 24, 34, .85); border: 1px solid rgba(245, 215, 110, .6);
+  padding: 9px 18px; border-radius: 8px; font-size: 15px; font-weight: 600;
+  opacity: 0; transition: opacity .3s; max-width: 640px; text-align: center; }
+#toast.show { opacity: 1; }
+#banner { position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%) scale(.9);
+  text-align: center; opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none; }
+#banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+#banner-title { font-size: 46px; font-weight: 900; letter-spacing: 2px; color: #f5d76e;
+  text-shadow: 0 3px 0 rgba(0,0,0,.6), 0 0 30px rgba(245,215,110,.5); }
+#banner-sub { font-size: 17px; margin-top: 6px; text-shadow: 0 2px 0 rgba(0,0,0,.7); }
+#damage-flash { position: fixed; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(255,0,0,.45) 100%); }
+#damage-flash.flash { animation: dmg .45s ease-out; }
+@keyframes dmg { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------------- Screens ---------------- */
+.screen { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center;
+  justify-content: center; background: linear-gradient(180deg, rgba(6,20,30,.25), rgba(6,20,30,.72)); }
+.panel { max-width: 620px; width: calc(100% - 40px); text-align: center;
+  background: rgba(8, 24, 34, .82); border: 1px solid rgba(245, 215, 110, .45);
+  border-radius: 16px; padding: 34px 40px; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+.kicker { font-size: 12px; letter-spacing: 5px; color: #7ec8f2; font-weight: 800; }
+.panel h1 { font-size: 84px; line-height: .95; font-weight: 900; letter-spacing: 3px;
+  color: #f5d76e; text-shadow: 0 4px 0 #c0392b, 0 8px 24px rgba(0,0,0,.6); margin: 12px 0; }
+.panel h2 { font-size: 52px; font-weight: 900; letter-spacing: 4px; color: #ff5a4e;
+  text-shadow: 0 3px 0 rgba(0,0,0,.6); margin-bottom: 8px; }
+.story { font-size: 16px; line-height: 1.55; color: #dfe8ee; margin: 10px 0 18px; }
+#start-stats { font-size: 14px; color: #f5d76e; margin-bottom: 18px; font-weight: 600; }
+.buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 18px; }
+button { pointer-events: auto; cursor: pointer; border: 1px solid rgba(255,255,255,.4);
+  background: rgba(255,255,255,.12); color: #fff; font-size: 15px; font-weight: 700;
+  letter-spacing: 1px; padding: 13px 26px; border-radius: 10px; }
+button:hover { background: rgba(255,255,255,.25); }
+button.primary { background: #f5d76e; color: #1a1a1a; border-color: #f5d76e; }
+button.primary:hover { background: #ffe08a; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center;
+  font-size: 13px; color: #b9c8d2; }
+.controls b { color: #fff; }
+.foot { margin-top: 16px; font-size: 12px; color: #8fa3b0; }

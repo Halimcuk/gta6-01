@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLMAR HEAT — Open-World Crime in Solmar Bay</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="game"></div>
+
+<!-- ======================= HUD ======================= -->
+<div id="hud" class="hidden">
+  <div id="top-left">
+    <div id="cash">$0</div>
+    <div id="stars">☆☆☆☆☆</div>
+    <div id="health-bar"><div id="health-fill"></div></div>
+  </div>
+  <div id="top-right">
+    <canvas id="minimap" width="180" height="180"></canvas>
+    <div id="clock">10:12</div>
+  </div>
+  <div id="objective-box">
+    <div id="objective-title">JOB</div>
+    <div id="objective-line">Jack any car (walk up and press E)</div>
+    <div id="mission-timer"></div>
+  </div>
+  <div id="speed"></div>
+  <div id="context-hint"></div>
+  <div id="cash-pop"></div>
+  <div id="toast"></div>
+  <div id="banner"><div id="banner-title"></div><div id="banner-sub"></div></div>
+  <div id="damage-flash"></div>
+</div>
+
+<!-- ======================= START SCREEN ======================= -->
+<div id="start-screen" class="screen">
+  <div class="panel">
+    <div class="kicker">SOLMAR BAY &middot; AN OPEN-WORLD CRIME GAME</div>
+    <h1>SOLMAR<br>HEAT</h1>
+    <p class="story">Rex Marlowe is out of money, out of luck, and out of options.
+      Mara Voss runs a garage crew out of the old marina — and she needs a
+      wheelman. Steal cars, run jobs, dodge the Bay PD, and work your way
+      from street courier to the biggest score Solmar Bay has ever seen.</p>
+    <div id="start-stats"></div>
+    <div class="buttons">
+      <button id="btn-start" class="primary">NEW GAME</button>
+      <button id="btn-continue">CONTINUE</button>
+    </div>
+    <div class="controls">
+      <span><b>WASD</b> move / drive</span>
+      <span><b>Mouse</b> camera (click to lock)</span>
+      <span><b>E</b> enter / exit car</span>
+      <span><b>Shift</b> sprint</span>
+      <span><b>Space</b> jump / handbrake</span>
+      <span><b>F</b> punch</span>
+      <span><b>Esc</b> pause</span>
+    </div>
+    <div class="foot">An original game. No assets, names or places from any commercial game.
+      Progress saves to this browser.</div>
+  </div>
+</div>
+
+<!-- ======================= PAUSE SCREEN ======================= -->
+<div id="pause-screen" class="screen hidden">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <p class="story">Solmar Bay waits for no one — except right now.</p>
+    <div class="buttons">
+      <button id="btn-resume" class="primary">RESUME</button>
+      <button id="btn-save">SAVE GAME</button>
+      <button id="btn-quit">QUIT TO MENU</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= END SCREEN ======================= -->
+<div id="end-screen" class="screen hidden">
+  <div class="panel">
+    <h2 id="end-title">BUSTED</h2>
+    <p class="story" id="end-sub"></p>
+    <div class="buttons">
+      <button id="btn-retry" class="primary">BACK ON THE STREETS</button>
+      <button id="btn-menu">MAIN MENU</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="src/config.js"></script>
+<script src="src/rng.js"></script>
+<script src="src/textures.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/input.js"></script>
+<script src="src/city.js"></script>
+<script src="src/vehicles.js"></script>
+<script src="src/pedestrians.js"></script>
+<script src="src/player.js"></script>
+<script src="src/wanted.js"></script>
+<script src="src/missions.js"></script>
+<script src="src/effects.js"></script>
+<script src="src/hud.js"></script>
+<script src="src/save.js"></script>
+<script src="src/shots.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
